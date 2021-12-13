@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+        <!-- functions of q1, q2, q3 -->
+        <script>
+          $(document).ready(function(){
+            
+            
+            // q1 Internet checkbox
+              $("#q1_internet").change(function() {
+                if($("#q1_internet").is(":checked")){
+              $("select[name='q2']").prop('disabled', false);
+               }else{
+              $("select[name='q2']").prop('disabled', true);
+               }
+              });
+
+            // q3 Disable checkbox
+              $("input[value='q30_disabled']").change(function() {
+                $("input[name='q31']").prop('disabled', true);
+                $("input[name='q31']").prop('checked', false);
+              });
+              
+            // q3 Enable checkbox
+              $("input[value='q30_enabled']").change(function() {
+                $("input[name='q31']").prop('disabled', false);
+              });
+                       
+        
+
+          });
+          </script>
+    </head>
+
+    <body>
+      <div style="padding:10px;"> 
+      <p style="border-left: 10px solid #688FF4; padding: 0.5em; border-bottom: 2px solid #688FF4; font-weight: bold; ">Codestates텔레콤 서비스 탈퇴 예측</p>
+
+        <form name="thisForm" action="/result", method="POST">
+
+            <!-- (q1, q2) -->
+            <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">어떤 서비스를 이용하고 있나요?</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="q1" id="q1_phone" value="phone">
+                  <label class="form-check-label" for="gridRadios1">통화 서비스</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="q1" id="q1_internet" value="internet">
+                  <label class="form-check-label" for="gridRadios2">인터넷 서비스</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="row mb-3">
+              <label for="inputinternet3" class="col-sm-2 col-form-label">이용중인 인터넷 서비스를 선택해주세요</label>
+              <div class="col-sm-10">
+                <select name="q2" id="q2_internet" class="form-select" aria-label="Default select example" disabled>
+                    <option value="0" selected>반드시 하나를 선택해주세요</option>
+                    <option value="3">광케이블(Fiber optic)</option>
+                    <option value="2">지역전화망(DSL)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- (q3) -->
+            <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">부가서비스를 이용하나요?</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q30" id="gridRadios1" value="q30_disabled"> 
+                  <label class="form-check-label" for="gridRadios1">
+                    이용 중인 부가서비스가 없어요.
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q30" id="gridRadios2" value="q30_enabled" checked>
+                  <label class="form-check-label" for="gridRadios2">
+                    이용 중인 부가서비스가 있어요.
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="row mb-3">
+              <legend class="col-form-label col-sm-2 pt-0">이용 중인 부가서비스를 모두 선택해주세요</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="다회선 서비스">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      다회선 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="온라인 보안 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      온라인 보안 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="온라인 백업 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      온라인 백업 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="기기 보호 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      기기 보호 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="기술 지원 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      기술 지원 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="스트리밍 TV 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      스트리밍 TV 서비스
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input name="q31" class="form-check-input" type="checkbox" value="스트리밍 영화 서비스">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      스트리밍 영화 서비스
+                    </label>
+                </div>
+              </div>
+            </fieldset>
+            
+            <!-- (q4) -->
+            <div class="row mb-3">
+                <label for="montlycharge3" class="col-sm-2 col-form-label">월 납부금액은 어느 정도인가요?</label>
+                <div class="col-sm-10">
+                    <label class="visually-hidden" for="inlineFormInputmonthlycharge">월 납부금액</label>
+                    <div class="input-group">
+                      <div class="input-group-text">$</div>
+                      <input name="q4" type="text" class="form-control" placeholder="월 납부금액" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- (q5) -->
+            <div class="row mb-3">
+                <label for="paymentmethod3" class="col-sm-2 col-form-label">납부 방법을 선택해주세요</label>
+                <div class="col-sm-10">
+                  <select name="q5" class="form-select" aria-label="Default select example" required>
+                      <option selected>반드시 하나를 선택해주세요</option>
+                      <option value="1">Mailed check</option>
+                      <option value="2">Electronic check</option>
+                      <option value="3">Credit card (automatic)</option>
+                      <option value="4">Bank transfer (automatic)</option>
+                  </select>
+                </div>
+            </div>
+
+            <!-- (q6) -->
+            <div class="row mb-3">
+                <label for="contract3" class="col-sm-2 col-form-label">계약 유형을 선택해주세요</label>
+                <div class="col-sm-10">
+                  <select name="q6" class="form-select" aria-label="Default select example" required>
+                      <option selected>반드시 하나를 선택해주세요</option>
+                      <option value="1">Month-to-month</option>
+                      <option value="2">One year</option>
+                      <option value="3">Two year</option>
+                  </select>
+                </div>
+            </div>
+
+            <!-- (q7) -->
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">서비스를 가입기간은 총 몇 개월인가요?</label>
+                <div class="col-sm-10">
+                    <input name="q7" type="range" class="form-range" min="0" max="72" required oninput="document.getElementById('q7_value').innerHTML=this.value;">
+                    <span id="q7_value"></span>개월
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        </form>
+
+        <div>
+            <p style="border-left: 10px solid #688FF4; padding: 0.5em; border-bottom: 2px solid #688FF4; font-weight: bold; ">예측 결과</p>
+            
+            <!-- 예측값에 따라 문장 출력하기 -->
+            {% if final == [1] %}
+            <p>해당 고객은 조만간 서비스를 탈퇴할 것으로 예측됩니다.</p>
+            <p>소중한 고객이 서비스를 이탈하지 않도록 관심을 갖고 조치해주세요.</p>
+            {% elif final == [0] %}
+            <p>해당 고객은 앞으로도 서비스를 유지할 것으로 예측됩니다.</p>
+            <p>계속해서 튼튼한 관계를 유지할 수 있도록 차별화된 마케팅 전략이 필요합니다.</p>
+            {% else %}
+            <p>데이터를 입력하고 'submit' 버튼을 눌러주세요.</p>          
+            {% endif %}
+
+            <!-- 예측값만 출력하기 (테스트용)
+            <p>해당고객의 탈퇴여부는 {{ final }} 입니다. </p> -->
+            
+
+            <!-- 입력된 데이터 출력하기 (테스트용)
+            <p> q1: {{ ans1 }} </p>
+            <p> q2: {{ ans2 }} </p>
+            <p> q3: {{ ans3 }} </p>
+            <p> q4: {{ ans4 }} </p>
+            <p> q5: {{ ans5 }} </p>
+            <p> q6: {{ ans6 }} </p>
+            <p> q7: {{ ans7 }} </p> -->
+            
+        </div>
+    </div>    
+    </body>
+</html>
